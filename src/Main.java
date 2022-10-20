@@ -2,6 +2,8 @@ import java.math.BigInteger;
 import java.security.*;
 import java.security.interfaces.DSAKeyPairGenerator;
 import java.security.interfaces.DSAParams;
+import java.security.interfaces.DSAPrivateKey;
+import java.security.interfaces.DSAPublicKey;
 import java.util.Scanner;
 
 public class Main {
@@ -37,7 +39,7 @@ public class Main {
         try {
             //Generate Public dan Private key
             KeyPairGenerator kpg = KeyPairGenerator.getInstance("DSA");
-            kpg.initialize(1024);
+            kpg.initialize(512);
 
             KeyPair kp = kpg.generateKeyPair();
 
@@ -48,6 +50,29 @@ public class Main {
 
             sign.initSign(privateKey);
             sign.update((getHash(input)).getBytes());
+
+//            System.out.println("Kunci Privat : "+kp.getPrivate());
+//            System.out.println("Kunci Publik : "+kp.getPublic());
+            System.out.println("Fungsi Hash : " + getHash(input));
+
+            DSAPrivateKey privKey = (DSAPrivateKey) kp.getPrivate();
+            DSAPublicKey pubKey = (DSAPublicKey) kp.getPublic();
+            DSAParams dsap = privKey.getParams();
+
+            System.out.println();
+            System.out.println("Nilai P : " + dsap.getP());
+            System.out.println("Nilai q : " + dsap.getQ());
+            System.out.println("Nilai g : " + dsap.getG());
+            System.out.println("Nilai x : " + privKey.getX());
+            System.out.println("Nilai y : " + pubKey.getY());
+
+//            BigInteger q = dsap.getQ();
+//            BigInteger p = dsap.getP();
+//            BigInteger g = dsap.getG();
+//            BigInteger x = privKey.getX();
+//            BigInteger y = pubKey.getY();
+
+
 
 
         } catch (NoSuchAlgorithmException | InvalidKeyException | SignatureException e) {

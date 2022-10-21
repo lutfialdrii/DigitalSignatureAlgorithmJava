@@ -34,7 +34,7 @@ public class Main {
 
         Scanner scn = new Scanner(System.in);
 
-        System.out.print("Masukkan Pesan : ");
+        System.out.print("\nMasukkan Pesan : ");
         String input = scn.nextLine();
 
         System.out.println("\n==== Generate Fungsi Hash ====");

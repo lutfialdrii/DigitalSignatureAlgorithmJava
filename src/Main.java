@@ -33,9 +33,10 @@ public class Main {
 
 
         Scanner scn = new Scanner(System.in);
-        System.out.print("\nMasukkan Message : ");
 
-        String input = scn.next();
+        System.out.print("Masukkan Pesan : ");
+        String input = scn.nextLine();
+
         System.out.println("\n==== Generate Fungsi Hash ====");
         System.out.println("Fungsi Hash : " + getHash(input));
         System.out.println("==============================");
@@ -102,8 +103,9 @@ public class Main {
              * Step 2 : Verifikasi Digital Signature
              */
             System.out.println("\n==== Verifikasi Digital Signature ====");
-            System.out.print("\nMasukkan Pesan yang diterima : ");
-            String input2 = scn.next();
+
+            System.out.print("Masukkan pesan yang diterima : ");
+            String input2 = scn.nextLine();
 
             String hash2 = getHash(input2);
             byte[] val2byte = getHash(input2).getBytes();
